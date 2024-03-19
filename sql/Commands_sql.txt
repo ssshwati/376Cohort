@@ -1,0 +1,756 @@
+1. Oracle credentials 
+   https://login.oracle.com/mysso/signon.jsp
+
+2. https://www.oracle.com/java/technologies/javase/jdk11-archive-downloads.html
+   [ download the "Installer" instead of zip ]
+
+3. https://www.eclipse.org/downloads/packages/release/2022-06/r
+*Git Commands*
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/AyushArbat123/AyushArbat.git
+git push -u origin main
+git config --global --list
+git config --global user.name "AMIT“
+
+git config --global user.email amit_2001@yahoo.com
+
+
+
+https://download.eclipse.org/egit/updates/
+
+----------------DBMS----------------------------
+#MySql server 8
+https://dev.mysql.com/downloads/mysql/
+#MySql workbench
+https://dev.mysql.com/downloads/workbench/
+
+
+------------------Angular-------------------
+npm install -g @angular/cli@15.1.6
+
+ng new databindingapp
+ng g directive customhover
+ng new parentchildapp
+ng g c child
+ng g pipe square
+ng g pipe aadharno
+ng new bookserviceapp
+ng g service bookdata   (g means generate)
+ng add @ng-bootstrap/ng-bootstrap
+OR//
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+ng new routingapp
+ng g c about	(g- generate, c-component)
+ng g c news
+ng g c Product
+ng g c ProductDetails
+ng new angularformsapp
+ng g c reactiveform
+ng g c templatedrivenform
+
+<button [disabled]="buttonstatus">
+<button ng-disabled="buttonstatus">
+which directives to start angularjs application
+The ng-app directive initializes an AngularJS application. The ng-init directive initializes application data. The ng-model directive binds the value of HTML controls (input, select, textarea) 
+ to application data
+
+Directive is considered a core component in an Angular application
+HTTPModule: To fetch data from a server or database in Angular
+In import we give single quote ' '
+   eg import { HttpClientModule } from '@angular/common/http';
+filter application | and the name
+
+
+npm install -g @angular/cli::The command is used to install Angular CLI globally
+ng generate service myservice::The command to generate a new service using Angular CLI
+ng g c mycomponent --flat::It creates new files at the top level of the current project
+
+purpose of Angular.json
+The angular.json file at the root level of an Angular workspace provides workspace-wide and 
+project-specific configuration defaults. These are used for build and development tools provided 
+by the Angular CLI. Path values given in the configuration are relative to the root workspace directory.
+
+purpose of package.json
+the package. json file provides a simplified way to manage a project's metadata and dependencies. 
+The file ensures a project always has current information about the libraries and tools it needs 
+to work correctly. package.json is a file that contains information about the project and its dependencies
+package.json is primarily responsible for defining npm packages for the project.
+
+data binding in AngularJS is
+   Automatic synchronization of data between model and view components
+
+router is a part of: @angular/router module
+
+Model is lowest level of pattern responsible for maintaining data
+
+Angular is a JavaScript framework
+
+
+
+1.create database empmgmt;
+2.create database IF NOT EXISTS empmgmt;
+3.use empmgmt;
+4.create table dept(
+  deptid     float(2,0),
+  dname      varchar(14),
+  loc        varchar(13),
+  constraint pk_dept primary key (deptid)
+);
+5.describe dept;
+6.drop table dept;
+7.ALTER TABLE dept CHANGE deptid deptno int;
+8.insert into dept values(20, 'RESEARCH', 'DALLAS');
+9.select * from dept;
+10.ALTER TABLE dept RENAME to department;
+11.describe department;
+12.select * from department;
+13.ALTER TABLE department CHANGE deptno deptid int;
+14.ALTER TABLE department CHANGE deptid deptid char;//data type wont be changed if already values are present in the column
+15.ALTER TABLE department DROP COLUMN dname;
+16.TRUNCATE TABLE department;
+17.DROP TABLE department;
+18.alter table dept ADD CONSTRAINT pk_dept primary key (deptid);
+19.CREATE TABLE Emp(EmpId Integer, EmpName Varchar(20) NOT NULL,Email Varchar(15) UNIQUE, salary Integer, DeptCode Integer(3),PRIMARY KEY (`EmpId`),CHECK (salary > 10000));
+20.ALTER TABLE Emp ADD CONSTRAINT Emp_Fkey_const FOREIGN KEY Emp_Fkey(DeptCode) REFERENCES Dept(deptid);
+21.create table emp(  
+  empno    int,  
+  ename    varchar(10),  
+  job      varchar(9),  
+  mgr      int,  
+  hiredate date,  
+  sal      float,    
+  deptno   int,  
+  constraint pk_emp primary key (empno),  
+  constraint fk_deptno foreign key (deptno) references dept (deptid)  
+  );
+22.insert into DEPT (DEPTID, DNAME, LOC) values(10, 'ACCOUNTING', 'NEW YORK');
+   insert into dept values(20, 'RESEARCH', 'DALLAS');
+   insert into dept values(30, 'SALES', 'CHICAGO');
+   insert into dept values(40, 'OPERATIONS', 'BOSTON');
+23.ALTER TABLE Emp DROP FOREIGN KEY fk_deptno ;
+24.insert into emp values(7839, 'KING', 'PRESIDENT', null, STR_TO_DATE('17-11-1981','%d-%m-%Y'),5000,10);
+25.select count(*) from emp;
+26.select empno, ename, job from emp;
+27.select empno, ename, job from emp where mgr = 7839;
+28.select ename from emp where deptno=20;
+29.select ename, hiredate as "Date of Joining" from emp where deptno = 20;
+30.select empno, ename from emp where ename='SMITH';
+31.select * from emp where sal < 1500;
+32.select * from emp where sal < 1500 AND deptno=30;
+33.select * from emp where sal = 1250 OR sal = 1500;
+34.select * from emp where sal IN (1250,1500);
+//[select * from emp where sal = 1250 OR sal = 1500;]
+  OR [ select * from emp where sal IN (1250,1500);]  //both are same it is not between
+35.select * from emp where ename = 'Martin';
+36.select * from emp where sal <=2500 AND sal >=1500;
+37.select * from emp where sal BETWEEN 1500 AND 2500;
+//select * from emp where sal <=2500 AND sal >=1500; is same as select * from emp where sal BETWEEN 1500 AND 2500;
+38.select ename from Emp where ename LIKE 'A%';
+39.select ename from emp where binary ename  ="SMITH";
+40.select * from address where city='PUNE';
+41.select * from address where binary city='PUNE';
+42.select ename from Emp where ename LIKE '__I%';  //names having 3rd letter as I
+43.select ename from Emp where ename LIKE 'J%S';
+44.select * from emp where MGR IS NULL;
+45.SELECT ename, job, sal FROM emp WHERE ename LIKE 'S%'OR job LIKE '%MAN%';
+46.select ename, deptno from Emp where  deptno=10 or deptno=20;
+47.select ename,deptno from emp where deptno in(10,20);
+48.SELECT ename,job,sal FROM emp WHERE deptno = 30 AND hiredate < DATE('1981-12-03')
+49.select ename,job,sal from emp where deptno=30 and hiredate<'1981-12-3';
+50.select DISTINCT JOB from emp;
+51.select * from emp ORDER BY sal;
+52.select * from emp ORDER BY sal DESC;
+53.select * from emp ORDER BY sal DESC, ename ASC;  //sorting would take place on sal but if same sal exists then would happen on ename between them
+54.select ename,deptno from emp where deptno not in(30,40);
+55.select CONCAT('Hello ', ename)  FROM emp;
+56.SELECT CONCAT('Today is ', sysdate()) FROM dual;
+57.SELECT SUM(Sal) AS TOTALSAL From Emp;
+58.SELECT AVG(Sal) AS AVERAGESAL From Emp;
+59.select avg(sal) as mname from emp where ename like 'm%';
+60.select ename,sal from emp where ename like 'm%_';
+61.select max(sal) as minsal from emp;
+62.select min(sal) as minsal from emp;
+63.SELECT COUNT(*) From Emp;
+64.SELECT COUNT(DISTINCT Sal) From Emp;
+65.SELECT COUNT(Sal) From Emp;
+66.select sal,count(*) from emp group by sal;
+67.select job,count(*) from emp group by job;
+68.select job,count(*) from emp group by job order by count(*) asc;
+69.select job from emp group by job;
+70.select sal,min(sal) from emp group by sal;
+//All the columns present in SELECT clause must be present in GROUP BY clause also
+//All the columns present in GROUP BY clause need not be present in the SELECT clause
+71.select sal,ename from emp group by sal,ename;
+//gives distinct combinations of sal and ename...
+72.SET sql_mode='ONLY_FULL_GROUP_BY';  -- enables sql to give error for the conditions given above
+73.SET sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''));  -- enables sql to not give error and produce a output
+74.select sal,ename,count(*) from emp group by sal,ename;
+75.select sal,ename,count(*) from emp group by sal,ename having sal>1500;
+//HAVING is used for group by
+76.select sal,ename,count(*) from emp group by sal,ename having sal>1500 order by ename desc;
+77.SELECT empno, Sal, ename, Count(*) FROM Emp where job LIKE '%MAN%' GROUP BY Sal, ename, empno Having MAX(empno) < 7777 ORDER BY Max(empno) DESC;
+78.SELECT Sal, Count(*) FROM Emp GROUP BY Sal HAVING Count(*) >= 2;
+79.select job,mgr,count(*) from emp group by job,mgr order by count(*) desc;
+80.select ABS(-15) "absolute" from dual;
+81.select power(4,3) "raisedto" from dual;
+82.select ROUND(17.175,1) "roundedno" from dual;  //1 gives no. of digits after decimal
+83.select ROUND(17.175,2) "roundedno" from dual;
+84.select CEIL(17.175) "ceilno" from dual;  //gives 18
+85.select FLOOR(17.175) "ceilno" from dual; //gives 17
+86.select SQRT(81) "sqroot" from dual;
+87.select SIGN(-100) "sign" from dual;
+88.select SIGN(100) "sign" from dual;
+89.select MOD(5,2) "remainder" from dual;  //modulus operator
+90.select LOWER(ename) from emp;  //gives lowercase
+91.select UPPER(ename) from emp;  
+92.select ename,LENGTH(ename) as namelength from emp;
+93.select REPLACE(job,"PRESIDENT","SUPERBOSS") from Emp;
+94.select LPAD(ename,10,"-") from emp;
+95.select RPAD(ename,10,"-") from emp;
+96.select SUBSTR("HelloWorld",1,5) from Dual;
+97.SELECT Job, CASE 
+ WHEN job='Clerk' THEN 'Junior' 
+ WHEN job='PRESIDENT' THEN 'Superboss' 
+ WHEN job='manager' THEN 'boss' 
+ END AS hierarchy from Emp;
+98.select DATE_ADD('2024-02-02', INTERVAL 31 DAY);
+99.select ADDDATE('2024-02-02', 31);
+100.select CURDATE(); -- this returns string YYYY-MM-DD
+101.select CURTIME()
+102.select DATE_SUB('2024-02-02', INTERVAL 1 YEAR);
+103.select DATE('2021-01-05 22:20:02');
+104.select PERIOD_ADD(202402,06);            -- [ add 06 months to period 202402 ]
+105.select PERIOD_DIFF(202107,202101)	;	-- [ no of months between P1 and P2 in YYYYMM or YYMM format ]
+106.select DATE_FORMAT('2021-01-05 22:35:02','%W %M %Y');  -- DATE_FORMAT converts DATE to STRING datatype
+							   -- STR_TO_DATE converts STRING to the DATE format
+// %d-10 %D-10th %M-January %b-Jan  %m-01 %Y-1981 %y-81  %W-Monday
+107.select STR_TO_DATE('1-5-1981','%d-%m-%Y');
+108.select STR_TO_DATE('1-May-1981','%d-%M-%Y');
+109.select STR_TO_DATE('1st-May-1981','%D-%M-%Y');
+110.select EXTRACT(YEAR FROM '2021-01-05');
+111.select EXTRACT(YEAR_MONTH FROM '2021-01-05');
+112.select ename,job,hiredate,deptno,dept.loc from emp join dept where emp.deptno=dept.deptid;
+113.select ename, dname, job, hiredate, loc  from emp, dept where emp.deptno = dept.deptid  order by ename;
+114.select ename, dname, job, hiredate, loc  from emp, dept where emp.deptno = dept.deptid  order by ename limit 0,10;
+	---CROSS JOIN----
+115.SELECT Emp.empno, Emp.ename, Emp.deptno, Dept.dname FROM Emp CROSS JOIN Dept;
+// -- cross join doesnt depend on equality it gives cartesian product m x n
+116.SELECT Emp.empno, Emp.ename, Emp.deptno, Dept.dname FROM Emp, Dept;
+//  same as cross join
+	---Inner JOIN-----
+117.SELECT Emp.empno, Emp.ename, Dept.dname From Emp INNER JOIN Dept ON Emp.deptno = Dept.deptid;
+118.SELECT Emp.empno, Emp.ename, Dept.dname From Emp, Dept where Emp.deptno = Dept.deptid;
+119.insert into emp  values( 7777, 'MAX', 'MULLAR', 7782,  str_to_date('23-1-1982','%d-%m-%Y'), 1300,null);
+	---Outer JOIN-----
+120.SELECT Emp.empno, Emp.ename, Dept.dname From Emp LEFT OUTER JOIN Dept ON Emp.deptno = Dept.deptid;
+121.SELECT Emp.empno, Emp.ename, Dept.dname From Emp RIGHT OUTER JOIN Dept ON Emp.deptno = Dept.deptid;
+122.SELECT Emp.empno, Emp.ename, Dept.dname From Emp
+    LEFT OUTER JOIN Dept ON Emp.deptno = Dept.deptid
+    UNION
+    SELECT Emp.empno, Emp.ename, Dept.dname From Emp
+    RIGHT OUTER JOIN Dept ON Emp.deptno = Dept.deptid;
+123.SELECT Emp.empno, Emp.ename, Dept.dname From Dept RIGHT OUTER JOIN Emp ON Emp.deptno = Dept.deptid;
+124.select emp.ename,emp.sal,dept.dname from emp inner join dept where emp.deptno=dept.deptid and  sal between 1500 and 2500;
+ ---- SELF JOIN-----
+125.select e1.ename,e2.ename as 'manager' from emp e1 inner join emp e2 on e1.mgr=e2.empno;
+126.select e.ename, e.sal, d.dname from emp e, dept d where e.deptno = d.deptid and e.sal BETWEEN 1500 and 2500;
+127.select e.ename, e.sal, d.dname from emp e, dept d where e.deptno = d.deptid and e.sal BETWEEN 1500 and 2500;
+  ----NESTED QUERY---
+128.select deptid from dept where dname='sales'; //1st query
+129.select empno,ename from emp where deptno=30; //2nd query
+130.select empno,ename from emp where deptno=(select deptid from dept where dname='sales'); //3rd query
+131.SELECT empno,ename FROM emp WHERE deptno IN (SELECT deptid FROM Dept WHERE dname = 'SALES');
+132.SELECT empno,ename FROM emp WHERE deptno IN (SELECT deptid FROM Dept WHERE dname in ('SALES','Accounting'));
+133.select empno, ename from emp where sal=(select min(sal) from emp);
+134.select empno,ename,job from emp where sal> any (select avg(sal) from emp group by deptno);
+135.select ename, dname, job, empno, hiredate, loc from emp, dept where emp.deptno = dept.deptid order by ename;
+136.create table dept2(  
+  deptno     float(2,0),  
+  dname      varchar(14),  
+  loc        varchar(13),  
+  constraint pk_dept primary key (deptno)  
+  );
+-- NUMBER(p,s)  //for float
+-- p - p is the precision. or the total number of digits
+-- s - s is the scale, or the number of digits to the right of the decimal point
+-- float(4,2)  ->  10.12  total 4 digits but after . 2 digits
+137.describe dept2;
+138.select * from dept2;
+139.insert into DEPT2 (DEPTNO, DNAME, LOC) values(10, 'ACCOUNTING', 'NEW YORK');
+#Create new table based on existing table
+140.CREATE TABLE dept10 AS
+    SELECT deptno, dname
+    FROM dept2 WHERE deptno = 10;
+141.ALTER TABLE dept10 RENAME TO deptten;
+142.select * from deptten;
+143.alter table deptten add column loc varchar(13);
+
+  //  [either make deptno as the PK or Edit->Preference->Sql Editor->disable safe update]
+144.update deptten set dname = 'IT' where deptno = 10;
+145.delete from deptten;
+146.DELETE FROM deptten where deptno = 10;
+147.drop table deptten;
+148.UPDATE dept SET dname = 'IT' WHERE deptid=10;
+//delete from <table>
+  delete from <tablename> where pk=?
+  commit();
+  rollback();
+149.update emp set sal=(select sal from (select * from emp) as e where e.ename='Allen') where ename='Martin';
+150.UPDATE emp SET sal= (SELECT sal FROM (SELECT * FROM emp) AS tempemp WHERE tempemp.empno=7876 ) WHERE ename= 'Smith';
+-----Indexing----
+151.create index ind_name on empmgmt.emp(ename);
+152.create index ind_dname on empmgmt.dept(dname);
+----Storage Procedures----
+153.create procedure myproc1()
+    select * from empmgmt.emp where ename="Smith" order by ename,sal;
+154.call myproc1();
+155.create procedure myproc2(in name varchar(7))
+    select * from empmgmt.emp where ename=name order by ename,sal;
+// 'in' is used for input
+156.call myproc2('Smith');
+//  'out' is used for output
+157.create procedure GetEmpSalGreater(in s int, out total int)
+    select count(*) into total from emp where sal > s;
+
+158.call GetEmpSalGreater(1100, @total);
+159.select @total;
+160.CREATE PROCEDURE SetCounter(INOUT counter INT,IN inc INT)
+    SET counter = counter + inc;
+161.SET @counter = 1;
+162.CALL SetCounter(@counter,1);
+163.CALL SetCounter(@counter,5);
+164.select @counter;
+---control flow functions
+a. if()
+b. ifnull()
+c. case() when when else()
+165.select if(sal>1600,"highpackage","low package") from emp;
+166.select empno, ifnull(mgr,'not having any manager') as manager from emp;
+167.SELECT Ename, Sal, CASE
+    when SAL > 500 AND SAL < 1000 THEN 'OK'
+    when SAL > 1000 AND SAL < 1500 THEN 'GOOD'
+    when SAL > 1500 AND SAL < 2000 THEN 'VERY GOOD'
+    ELSE 'EXCELLENT'
+    END as rating from Emp;
+---Comparison Functions
+-- coalesce()
+-- it returns the first non-null value of a list or null if there are no non-null values.
+168.select COALESCE(NULL,2);
+169.select empno, coalesce(mgr,ename) as poc from emp;  -- if mgr is null then it will go to ename.
+170.create table student(
+	studid int,
+    m1 int,
+    m2 int,
+    m3 int
+
+    );
+171.drop table student;
+172.insert into student values(10, 50,60,40);
+173.insert into student values(20, 70,90,45);
+174.insert into student values(30, 90,90,95);
+-- max gives the highest value in the table and greatest gives the highest value in the particular row
+175.select studid, LEAST(m1,m2,m3) as low_mark, greatest(m1,m2,m3) as high_mark from student;
+176.select * from student;
+-- between 
+177.select * from emp where sal BETWEEN 1500 AND 2500;
+-- in
+178.select * from emp where MGR IS NULL;
+-- is null
+179.select * from emp where MGR IS NULL;
+like
+180.select ename from Emp where ename LIKE 'J%S';
+-- not in
+181.select * from emp where sal NOT IN (1250,1500);
+-- compulsorily have to return a value from the function
+182.delimiter //
+    create function noofemployees1()
+    returns int
+    DETERMINISTIC
+    begin
+    declare c int;
+    select count(*) into c from emp;
+    return c;
+    end; //
+    DELIMITER ;
+183.select noofemployees1();
+184.DELIMITER //
+    CREATE FUNCTION calculatesalary1(salary INT,bonusinpercent INT) 
+    RETURNS INT
+    DETERMINISTIC
+    BEGIN
+    DECLARE newsalary INT;
+    SET newsalary = salary + salary * bonusinpercent/100;
+    RETURN newsalary;
+    END; //
+    DELIMITER ;
+185.select calculatesalary('2000','14');
+186.DELIMITER //
+    create trigger dept_trig1 
+    before insert on dept for each row
+    begin
+    set new.dname = REPLACE(new.dname,'h','H');
+    end; //
+    DELIMITER ;
+187.select * from dept;
+188.insert into dept values(50,'hr','Mumbai');
+189.DELIMITER //
+    create trigger dept_trig2 
+    before insert on dept for each row
+    begin
+    set new.dname = REPLACE(new.dname,'Hr','HumanRe');
+    end; //
+    DELIMITER ;
+-- drop trigger dept_trig2;
+
+190.insert into dept values(60,'Hr','Mumbai');
+191.create table dept_log (
+    deptid integer,
+    creation_time date
+    );
+192.DELIMITER //
+    create trigger dept_trig3
+    after insert on dept for each row
+    begin
+    insert into dept_log values(NEW.deptid,Now());
+    end; //
+    DELIMITER ;
+193.insert into dept values(70,'Tech','Banglore');
+194.select * from dept;
+195.select * from dept_log;
+ -- DELETE keeps track of the deleted rows.
+
+-- TRUNCATE TABLE removes all rows from a table without logging the individual row deletions.
+
+--    TRUNCATE TABLE is similar to the DELETE statement with no WHERE clause; however, 
+
+--    TRUNCATE TABLE is faster.
+196.WITH tempemp as (SELECT * FROM emp where sal > 1600) select ename, sal from tempemp;
+ --The SQL WITH Clause is used to create temporary tables, which are further used in the main SQL queries.
+   The SQL WITH clause allows you to give a sub-query block a name 
+   Constraints can be column level or table level. Column level constraints apply to a column, 
+   and table level constraints apply to the whole table
+
+The NOT NULL constraint functions only as a column constraint (it cannot be used as a table constraint).
+197.SELECT * FROM emp WHERE sal = 1250;
+198. SELECT * FROM emp WHERE sal = '1250';  //same as above
+199.SELECT ROUND (12.345, 1) FROM DUAL;
+  SELECT ROUND (12.345, 2) FROM DUAL;
+  SELECT ROUND (12.342, 2) FROM DUAL;
+
+
+
+
+-- VIEW
+-- A view is a named query that's stored in a database. Once it's stored, other queries can 
+-- build on it. A view can be treated like a table anywhere in a SELECT statement. 
+-- We can also think of it as a named subquery.
+-- We need a bit of DDL to create a view. It follows the DDL pattern: CREATE object_type object_name
+-- The view's query follows the AS keyword.
+200.CREATE VIEW EmpWithManager AS
+    SELECT e.ename, m.ename AS "ManagerName" FROM Emp e 
+    INNER JOIN Emp m ON e.mgr = m.empno;
+201.select * from EmpWithManager;
+202.select ename from EmpWithManager;
+
+--Hackerrank
+203.create database hackerrank;
+204.create table threat_types
+( id int primary key,
+  threat_types varchar(255)
+);
+205.create table quarantine_urls
+( id int primary key,
+  threat_id int,
+  domain_name varchar(255),
+  status ENUM('Quarantined','Safe','Deleted'),
+  users_affected int,
+  constraint fk_threatid foreign key (threat_id) references threat_types (id)
+);
+206.insert into threat_types values (1, 'Phishing');
+	insert into threat_types values (2, 'Rootkit');
+	insert into threat_types values (3, 'Malware');
+207.select * from threat_types;
+208.insert into quarantine_urls values (17,1,'amazon.com','Quarantined',862);
+insert into quarantine_urls values (16,1,'google.com','Quarantined',63);
+insert into quarantine_urls values (9,1,'amazon.com','Quarantined',41);
+insert into quarantine_urls values (18,2,'amazon.com','Quarantined',149);
+insert into quarantine_urls values (12,2,'yahoo.com','Quarantined',967);
+209.insert into quarantine_urls values (4,3,'amazon.com','Quarantined',377);
+insert into quarantine_urls values (10,3,'yahoo.com','Quarantined',721);
+insert into quarantine_urls values (11,1,'yahoo.com','Deleted',551);
+insert into quarantine_urls values (20,1,'amazon.com','Safe',407);
+insert into quarantine_urls values (19,1,'amazon.com','Deleted',665);
+210.select * from quarantine_urls;
+211.select count(*) from quarantine_urls;
+212.insert into quarantine_urls values (15,1,'facebook.com','Safe',52);
+	insert into quarantine_urls values (2,1,'google.com','Safe',309);
+	insert into quarantine_urls values (1,2,'twitter.com','Safe',562);
+	insert into quarantine_urls values (13,2,'facebook.com','Safe',208);
+	insert into quarantine_urls values (14,2,'google.com','Deleted',731);
+213.insert into quarantine_urls values (8,2,'twitter.com','Safe',924);
+	insert into quarantine_urls values (7,2,'twitter.com','Safe',982);
+	insert into quarantine_urls values (6,2,'google.com','Deleted',864);
+	insert into quarantine_urls values (3,2,'facebook.com','Safe',136);
+	insert into quarantine_urls values (5,3,'yahoo.com','Safe',949);
+214.select q.domain_name, t.threat_types, count(*) as 'total_occurances', sum(q.users_affected) as 'total_users_affected' from  quarantine_urls q, threat_types t
+where q.threat_id = t.id group by q.threat_id, q.domain_name, q.status having q.status = 'Quarantined';
+---------------
+215.create table profiles (
+ id int primary key,
+ first_name varchar(255),
+ last_name varchar(255),
+ email varchar(255)
+	);
+216.create table relations (
+profile_id int references profiles(id),
+related_to varchar(255),
+is_approved boolean
+);
+
+217.insert into profiles values (1,'Shyne','Shilito', 'shilito0@ftc.gov');
+insert into profiles values (2,'Shell','Shade', 'sshade1@paginegialle.it');
+insert into profiles values (3,'Nobie','Splain', 'nsplain2@npr.org');
+218.insert into relations values (1,'cbasinigazzii ',1);
+insert into relations values (1,'ldevered',1);
+insert into relations values (1,'edeniskeb',1);
+insert into relations values (1,'cstirland4',1);
+insert into relations values (1,'ngooddiea',1);
+219.insert into relations values (1,'alockney7',1);
+insert into relations values (1,'jsorrillj',0);
+insert into relations values (1,'bnodin3',0);
+insert into relations values (1,'dwall2',0);
+insert into relations values (1,'folivas1',0);
+220.insert into relations values (2,'ksharland6',0);
+insert into relations values (2,'pbarosch8',0);
+insert into relations values (2,'smacieja9',0);
+insert into relations values (2,'bbrasonf',0);
+insert into relations values (2,'dabrahartg',0);
+221.insert into relations values (3,'gaymer5',1);
+insert into relations values (3,'rwoolcockse',1);
+insert into relations values (3,'egilyott0',1);
+insert into relations values (3,'agillionc',0);
+insert into relations values (3,'fgribbinh',0);
+222.select concat(p.last_name," ",p.first_name) as full_name,p.email,count(r.profile_id) as total_relations,sum(r.is_approved=true) as approved_relations,sum(r.is_approved=false) as pending_relations from profiles p left join relations r on p.id=r.profile_id group by p.id,p.last_name,p.first_name,p.email order by full_name ;
+223.select concat(p.last_name," ",p.first_name) as full_name,p.email,count(r.profile_id) as total_relations,sum(r.is_approved=true) as approved_relations,sum(r.is_approved=false) as pending_relations from profiles p join relations r on p.id=r.profile_id group by p.id,full_name,p.email order by full_name ;
+
+224.select concat(p.last_name," ",p.first_name) as full_name,p.email,count(r.profile_id) as total_relations,sum(if(r.is_approved=true,1,0)) as approved_relations,sum(if(r.is_approved=false,1,0)) as pending_relations from profiles p join relations r on p.id=r.profile_id group by p.id,full_name,p.email order by full_name ;
+
+225.create view approved as
+select CONCAT(first_name," ", last_name) as full_name, email,count(*) as 'approved_relations' from profiles p, relations r 
+where p.id = r.profile_id group by p.first_name, p.last_name,p.email, r.is_approved having r.is_approved=1;
+select * from approved;
+
+226.create view pending as
+select CONCAT(first_name," ", last_name) as full_name, email,count(*) as 'pending_relations' from profiles p, relations r 
+where p.id = r.profile_id group by p.first_name, p.last_name,p.email, r.is_approved having r.is_approved=0;
+select * from pending;
+drop view pending;
+
+227.create view approve_pending2 as
+select p.full_name, p.email, ifnull(a.approved_relations,0) as 'approved_relations', ifnull(p.pending_relations,0) as 'pending_relations' 
+from approved a right outer join pending p on a.email = p.email;
+
+228.select full_name, email, approved_relations + pending_relations as 'total_relations',
+approved_relations as 'approved_relations', pending_relations as 'pending_relations' 
+from approve_pending2;
+--------------------
+229.create table tasks (
+id varchar(255) primary key,
+title varchar(255),
+priority enum('P0','P1','P2','P3','P4','P5'),
+severity smallint
+);
+230.insert into tasks values ('TASK-9','11-140 - Vehicle Service Equipment','P0',80);
+insert into tasks values ('TASK-8','17 - Markup and Contingency','P0',75);
+insert into tasks values ('TASK-1','5 - Metals','P0',21);
+insert into tasks values ('TASK-5','10-820 - Bathroom Accessories','P1',57);
+insert into tasks values ('TASK-17','10-800 - Toilet, Bath, and Laundry Specialties','P1',50);
+insert into tasks values ('TASK-11','1-540 - Construction Aids','P1',14);
+insert into tasks values ('TASK-12','17-030 - Bond','P2',70);
+insert into tasks values ('TASK-18','11-020 - Security and Vault Equipment','P2',67);
+insert into tasks values ('TASK-3','3-330 - Poured Concrete Basement Walls','P2',4);
+insert into tasks values ('TASK-15','3-500 - Cementitious Decks and Underlayments','P3',88);
+
+231.insert into tasks values ('TASK-6','2-823 - PVC Fences and Gates','P3',49);
+insert into tasks values ('TASK-14','8-200 - Wood and Plastic Doors','P3',41);
+insert into tasks values ('TASK-10','11-400 - Food Service Equipment','P3',13);
+insert into tasks values ('TASK-20','7-100 - Damproofing and Waterproofing','P4',56);
+insert into tasks values ('TASK-13','11-600 - Laboratory Equipment','P4',56);
+insert into tasks values ('TASK-2','11-170 - Solid Waste Handling Equipment','P4',43);
+insert into tasks values ('TASK-19','15-950 - Testing, Adjusting, and Balancing','P4',28);
+insert into tasks values ('TASK-16','4-050 - Basic Masonry Materials and Methods','P5',29);
+insert into tasks values ('TASK-7','3-230 - Anchor Bolts','P5',28);
+insert into tasks values ('TASK-4','6-500 - Structural Plastics','P5',5);
+
+232.create view top1 as 
+select distinct (t1.priority), t1.title as 'top1' from tasks t1 where  t1.severity = 
+(select t2.severity from tasks t2 group by t2.priority, t2.severity having t2.priority = t1.priority order by t2.severity desc limit 0,1);
+
+select * from top1;
+
+create view top2 as 
+select distinct (t1.priority), t1.title as 'top2' from tasks t1 where  t1.severity = 
+(select t2.severity from tasks t2 group by t2.priority, t2.severity having t2.priority = t1.priority order by t2.severity desc limit 1,1);
+
+select * from top2;
+
+create view top3 as 
+select distinct (t1.priority), t1.title as 'top3' from tasks t1 where  t1.severity = 
+(select t2.severity from tasks t2 group by t2.priority, t2.severity having t2.priority = t1.priority order by t2.severity desc limit 2,1);
+
+select * from top3;
+
+select top1.priority, top1.top1,top2.top2,top3.top3 from top1,top2,top3 where top1.priority = top2.priority and top1.priority= top3.priority;
+
+233.select * from emp;
+SELECT ename, sal FROM emp WHERE sal >SOME (SELECT sal FROM emp WHERE ename like 'S%');
+
+234.WITH max_sal (MXSAL) AS (SELECT MAX(sal) FROM emp)
+SELECT empno, sal FROM emp,max_sal WHERE emp.sal = max_sal.MXSAL;5t
+
+
+
+
+
+-------JDBC-----
+https://mvnrepository.com/artifact/mysql/mysql-connector-java/8.0.13
+
+https://tomcat.apache.org/
+apache-tomcat-9.0.75-windows-x64
+
+FilePath for Web Container
+C:\C376\Workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\work\Catalina\localhost
+
+jstl
+https://mvnrepository.com/artifact/javax.servlet/jstl/1.2
+https://mvnrepository.com/artifact/taglibs/standard/1.1.2
+
+STS 3.9.14
+STS 3.9.22
+
+Spring Jars
+https://mvnrepository.com/artifact/org.springframework/spring-core
+
+Rakshith B R  to  Everyone 12:20
+https://mvnrepository.com/artifact/commons-logging/commons-logging/1.2
+https://mvnrepository.com/artifact/org.springframework/spring-aop/5.0.8.RELEASE
+
+Rakshith B R  to  Everyone 12:23
+https://mvnrepository.com/artifact/org.springframework/spring-beans/5.0.8.RELEASE
+https://mvnrepository.com/artifact/org.springframework/spring-context/5.0.8.RELEASE
+https://mvnrepository.com/artifact/org.aspectj/aspectjweaver
+
+https://mvnrepository.com/artifact/org.springframework/spring-jdbc
+https://mvnrepository.com/artifact/org.springframework/spring-tx
+
+https://mvnrepository.com/artifact/org.springframework/spring-webmvc/5.0.9.RELEASE
+https://mvnrepository.com/artifact/org.springframework/spring-web/5.0.9.RELEASE
+
+
+-----------------AWS--------------------
+https://aws.amazon.com
+
+Iaas-infrastructure as a service (machine/server)linux
+Paas-platform as a service (machine + jdk(java))
+
+ec2
+
+myfullstackuser 
+
+administrator access
+administrator access aws elastic bean stalk
+amazon ec2containerregistrory
+amazon rds full access
+amazon s3 access
+aws lambda_fullaccess
+
+add user review and create in users
+
+------s3
+
+myfullstackbucket
+
+enable acl
+uncheck blockall public access
+
+amazon s3->buckets->myfullstackbucket
+files and folder --add files
+
+in permissions
+edit acl  for both files
+
+-------ec2   it is like a machine where linux is there
+MyFullStackEC2
+
+keypairname- MyKeyPair
+
+Free tier eligible
+
+allow ssh
+allow http traffic from 
+allow https
+launch instance
+
+ec2->instance->
+connect to instance
+
+remote linux machine
+Installing HTTP web server on EC2
+
+linux commands-
+sudo su   =>  makes you the super user
+yum update -y => YUM helps you manage Linux softwares
+yum install httpd
+systemctl start httpd => systemctl enable httpd
+systemctl enable httpd => this will enable us to talk to http 				server
+sudo service httpd stop
+
+
+
+instances
+stop instance
+terminate instance
+
+
+----rds
+easy create
+mysql
+free tier
+
+mysqldb-db instance identifier
+root- master username
+	-master password
+
+
+ec2->security groups->asdfasdf->edit inbound rules
+Add Rule -> Custom TCP -> port 3306 -> Anywhere IpV4
+
+
+inside sts
+run configurations
+edit
+clean packages
+
+java -jar jarfilename.jar
+
+Create a application
+
+Webserver environment /application
+
+java
+corretto
+upload your code
+version v1
+local file
+
+Use an existing service role -> EC2 instance profile (awselasticbeanstalkrole)
+
+
+ng build --in angular for aws
+ng update::The command to update angular to a newer version
