@@ -128,4 +128,18 @@ public class Customer implements Serializable, Comparable<Customer> {
 		return age;
 	}
 
+	public long getMobileNumber() {
+		return mobileNumber;
+	}
+
+	public String getPassportNumber() {
+		return passportNumber;
+	}
+
+	public String getDobString() {
+		return dobString;
+	}
+	
+	
+
 }

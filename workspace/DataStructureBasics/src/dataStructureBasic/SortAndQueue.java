@@ -5,7 +5,6 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class SortAndQueue {
-
 	public static void selectionSort(int[] arr) {
 		int n = arr.length;
 		for (int i = 0; i < n - 1; i++) {
@@ -20,7 +19,7 @@ public class SortAndQueue {
 			arr[minIndex] = arr[i];
 			arr[i] = temp;
 			System.out.println("step " + (i + 1) + " " + Arrays.toString(arr));
-			if(i==2) {
+			if (i == 2) {
 				return;
 			}
 		}
@@ -37,7 +36,7 @@ public class SortAndQueue {
 				}
 			}
 			System.out.println("step " + (i + 1) + " " + Arrays.toString(arr));
-			if(i==2) {
+			if (i == 2) {
 				return;
 			}
 		}
@@ -48,7 +47,7 @@ public class SortAndQueue {
 		System.out.println("Original Array: " + Arrays.toString(arr));
 
 		selectionSort(arr);
-		//bubbleSort(arr);
+		// bubbleSort(arr);
 		System.out.println("Sorted Array: " + Arrays.toString(arr));
 
 		// Enqueue elements into a queue
@@ -56,16 +55,6 @@ public class SortAndQueue {
 		for (int element : arr) {
 			enqueue(queue, element);
 		}
-		
-//        for(int i =0;i<3;i++) {
-//        	enqueue(queue, arr[i]);
-//        }
-
-		// Dequeue elements to avoid overflow
-//		while (!queue.isEmpty()) {
-//			int dequeuedElement = dequeue(queue);
-//			System.out.println("Dequeued: " + dequeuedElement);
-//		}
 	}
 
 	private static void enqueue(Queue<Integer> queue, int element) {
@@ -74,8 +63,8 @@ public class SortAndQueue {
 			System.out.println("Enqueued: " + element);
 		} else {
 			System.out.println("Queue is full. Dequeue elements to avoid overflow.");
-			System.out.println("Dequeued: " +dequeue(queue));
-			enqueue(queue,element);
+			System.out.println("Dequeued: " + dequeue(queue));
+			enqueue(queue, element);
 		}
 	}
 

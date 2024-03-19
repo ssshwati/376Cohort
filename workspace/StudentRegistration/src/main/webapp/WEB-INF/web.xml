@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+
+    <display-name>StudentRegistration</display-name>
+
+    <!-- Servlet Configuration -->
+    <servlet>
+        <servlet-name>StudentRegistrationServlet</servlet-name>
+        <servlet-class>com.softra.controller.StudentRegistrationServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>StudentRegistrationServlet</servlet-name>
+        <url-pattern>/student</url-pattern>
+    </servlet-mapping>
+
+    <!-- Context Parameters for Database Configuration -->
+    <context-param>
+        <param-name>jdbcUrl</param-name>
+        <param-value>jdbc:mysql://localhost:3306/studentregistration?useSSL=false</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>jdbcUsername</param-name>
+        <param-value>root</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>jdbcPassword</param-name>
+        <param-value>root</param-value>
+    </context-param>
+
+</web-app>

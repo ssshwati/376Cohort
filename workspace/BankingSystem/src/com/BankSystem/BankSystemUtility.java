@@ -1,5 +1,10 @@
 package com.BankSystem;
 
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -17,29 +22,35 @@ import com.BankSystem.Customer.Customer;
 
 import com.Exp.CustomerNotFoundException;
 import com.Exp.InsufficientInitialBalanceException;
+import com.persistancefileSystem.DBIdao;
+import com.persistancefileSystem.DataBaseIDao;
 import com.persistancefileSystem.FileSystemIdao;
 import com.persistancefileSystem.Idao;
 
 public class BankSystemUtility {
 	// Map<Integer, Customer> customerMap = new HashMap<>();
 	Idao dao;
+	DBIdao dbdao;
 	List<Customer> customerList;
 	private Set<String> uniquePassportNumbers = new HashSet<>();
 	private static long lastAccountNumber = 335330698;
 
 	public BankSystemUtility() {
 		dao = new FileSystemIdao();
+		dbdao = new DataBaseIDao();
 		customerList = (List<Customer>) dao.retrieveAllCustomers();
 		uniquePassportNumbers = dao.loadUniquePassportNumbers();
 		//uncomment to retrieve
-//		for (Customer customer : customerList) {
-//			System.out.println("Customer Details: \n" + customer);
-//			System.out.println("Bank Account Details: \n" + customer.getBankAccount());
-//		}
-//		System.out.println("passport number Details: ");
-//		for (String s : uniquePassportNumbers) {
-//			System.out.println("\n" + s);
-//		}
+		/*
+		for (Customer customer : customerList) {
+			System.out.println("Customer Details: \n" + customer);
+			System.out.println("Bank Account Details: \n" + customer.getBankAccount());
+		}
+		System.out.println("passport number Details: ");
+		for (String s : uniquePassportNumbers) {
+			System.out.println("\n" + s);
+		}
+		*/
 		if (customerList != null && !customerList.isEmpty()) {
 			Customer lastCustomer = customerList.get(customerList.size() - 1);
 			Customer.setNextCustomerId(lastCustomer.getCustomerId() + 1);
@@ -272,8 +283,10 @@ public class BankSystemUtility {
 		int persistenceChoice = scanner.nextInt();
 		switch (persistenceChoice) {
 		case 1:
+		case 2:
 			// Save all customers to file
 			dao.saveAllCustomers(customerList);
+			dbdao.saveAllCustomersDB(customerList);
 			break;
 		default:
 			System.out.println("Invalid choice.");
@@ -281,6 +294,7 @@ public class BankSystemUtility {
 		}
 	}
 
+	
 	// case 6
 	public void showAllCustomers() {
 		System.out.println("============================================");

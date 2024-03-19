@@ -37,5 +37,25 @@ public abstract class Account implements Serializable{
 		balance+=d;
 	}
 
+	public long getAccountNumber() {
+		return accountNumber;
+	}
+
+	public long getBsbCode() {
+		return bsbCode;
+	}
+
+	public String getBankName() {
+		return bankName;
+	}
+
+	public String getOpeningDate() {
+		return openingDate;
+	}
+
+	public double getInterestEarned() {
+		return interestEarned;
+	}
+
 
 }
