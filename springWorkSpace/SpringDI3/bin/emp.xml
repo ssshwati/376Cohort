@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<context:annotation-config></context:annotation-config>
+	<context:component-scan
+		base-package="com.wileyedge"></context:component-scan>
+
+	<!-- What we did with Address, please make changes in Springs configuration 
+		so that Container would invoke parameterized constructor of Employee. -->
+	<!-- <bean id="e1" class="com.wileyedge.Employee" scope="prototype"> -->
+	<!-- <property name="id" value="10"></property> <property name="fname" value="Shwati"></property> 
+		<property name="lname" value="Kumari"></property> <property name="addr" ref="a2"></property> -->
+	<!-- <constructor-arg index="0" value="10"></constructor-arg> <constructor-arg 
+		index="1" value="Shwati"></constructor-arg> <constructor-arg index="2" value="Kumari"></constructor-arg> 
+		<constructor-arg index="3" ref="a2"></constructor-arg> </bean> -->
+
+	<!-- <bean id="e2" class="com.wileyedge.Employee" scope="prototype" init-method="myinit" 
+		destroy-method="mydestroy" autowire="byType"> -->
+	<!-- <bean id="e2" class="com.wileyedge.Employee" scope="prototype" init-method="myinit" 
+		destroy-method="mydestroy"> <property name="id" value="20"></property> <property 
+		name="fname" value=""></property> <property name="lname" value="Kumari"></property> -->
+	<!-- <property name="addr" ref="a1"></property> -->
+	<!-- </bean> -->
+
+
+	<!-- <bean id="a1" class="com.wileyedge.Address" scope="singleton"> <constructor-arg 
+		index="0" value="854301"></constructor-arg> <constructor-arg index="1" value="Purnea"></constructor-arg> 
+		<constructor-arg index="2" value="Bihar"></constructor-arg> -->
+	<!--<property name="postal" value="500074"></property> <property name="city" 
+		value="LB Nagar"></property> <property name="state" value="India"></property> -->
+	<!-- </bean> -->
+
+	<!-- <bean id="a2" class="com.wileyedge.Address" scope="singleton"> <property 
+		name="postal" value="560068"></property> <property name="city" value="Bangalore"></property> 
+		<property name="state" value="Ktk"></property> </bean> -->
+
+</beans>
